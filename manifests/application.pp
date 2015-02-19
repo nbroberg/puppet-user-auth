@@ -2,7 +2,7 @@ class user-auth::application (
   $credentials_bucket_name,
   $credentials_bucket_region = "us-east-1",
   $path_to_ssh_keys = "ssh-keys",
-  $application_path = "$defaults::paths::application_base/user_auth",
+  $application_path = "/tmp/user_auth",
 ) {
     file { $application_path:
       ensure => directory,
