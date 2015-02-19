@@ -36,7 +36,7 @@ Dir.mkdir(USER_MANIFESTS_PATH)
 new_users.each do |username|
   puts "Downloading public key for user '#{username}'..."
   ssh_key_path = "#{PUBLIC_KEY_PATH}/#{username}.pub"
-  system "aws --region=#{S3_BUCKET_REGION} s3 cp s3://#{S3_BUCKET}/ssh-keys/#{username}.pub #{ssh_key_path}"
+  system "aws --region=#{S3_BUCKET_REGION} s3 cp s3://#{S3_BUCKET}/#{PATH_TO_SSH_KEYS}/#{username}.pub #{ssh_key_path}"
   puts "Syncing user '#{username}'..."
   manifest_path = "#{USER_MANIFESTS_PATH}/#{username}.pp"
   ssh_key = File.read(ssh_key_path).split(" ")[1]

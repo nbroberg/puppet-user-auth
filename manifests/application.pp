@@ -18,7 +18,6 @@ class user-auth::application (
     } ->
     exec { "Create SSH users":
       command => "ruby ${application_path}/sync_users.rb",
-      require => Exec["check if instance profile credentials are available"],
       timeout => 500,
     }
     cron { "Sync SSH users every 5 minutes":
